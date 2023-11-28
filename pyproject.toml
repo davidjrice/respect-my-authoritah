@@ -10,7 +10,7 @@ dependencies = [
 ]
 
 [project.scripts]
-author-updater = "respect-my-authoritah:main"
+respect-my-authoritah = "respect_my_authoritah:main"
 
 [build-system]
 requires = ["hatchling"]

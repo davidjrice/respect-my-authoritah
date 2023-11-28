@@ -1,10 +1,10 @@
-name: Update authors
+name: respect-my-authoritah
 on:
   push:
     branches:
       - main
 jobs:
-  update:
+  respect-my-authoritah:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -12,10 +12,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-            python-version: 3.8
+          python-version: 3.12
       - name: Install dependencies
-        run: pip install toml requests
+        run: pip install .
       - name: Run script
-        run: python respect-my-authoritah.py
+        run: respect-my-authoritah
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
