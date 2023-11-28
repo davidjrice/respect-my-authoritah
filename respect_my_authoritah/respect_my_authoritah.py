@@ -25,9 +25,21 @@ class Authoritah:
         with open('pyproject.toml', 'w') as file:
             toml.dump(pyproject, file)
 
+        # Create a new branch
+        branch_name = f"update-authors-{uuid.uuid4().hex}"
+        os.system(f'git checkout -b {branch_name}')
+
         # Commit and push changes
         os.system('git config --global user.email "github-actions[bot]@users.noreply.github.com"')
         os.system('git config --global user.name "GitHub Actions"')
         os.system('git add pyproject.toml')
         os.system('git commit -m "Update authors list"')
-        os.system('git push')
+        os.system(f'git push origin {branch_name}')
+
+        # Create a new pull request
+        pr_data = {
+            'title': 'Update authors list',
+            'head': branch_name,
+            'base': 'main',
+        }
+        response = requests.post(f'https://api.github.com/repos/{repo}/pulls', headers=headers, json=pr_data)
