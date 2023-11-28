@@ -1,0 +1,17 @@
+[project]
+description = "Update authors list in pyproject.toml from GitHub contributors"
+license = "MIT"
+name = "respect-my-authoritah"
+readme = "README.md"
+version = "0.0.1"
+dependencies = [
+    "requests",
+    "toml",
+]
+
+[project.scripts]
+author-updater = "respect-my-authoritah:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
