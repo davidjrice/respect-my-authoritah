@@ -26,6 +26,9 @@ class Authoritah:
         token = os.getenv('GITHUB_TOKEN')
         headers = {'Authorization': f'token {token}'}
         response = requests.get(f'https://api.github.com/repos/{repo}/contributors', headers=headers)
+        if response.status_code != 200:
+            print(f"Failed to fetch contributors: {response.content}")
+            sys.exit(1)
         print(response)
 
         contributors = [user['login'] for user in response.json()]
@@ -60,3 +63,9 @@ class Authoritah:
             'base': 'main',
         }
         response = requests.post(f'https://api.github.com/repos/{repo}/pulls', headers=headers, json=pr_data)
+        if response.status_code not in [200, 201]:
+            print(f"Failed to create pull request: {response.content}")
+            sys.exit(1)
+        print(response)
+
+        print("Pull request created successfully")
