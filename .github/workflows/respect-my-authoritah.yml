@@ -18,4 +18,4 @@ jobs:
       - name: Run script
         run: respect-my-authoritah
         env:
-          GITHUB_TOKEN: ${{ secrets.RESPECT_MY_AUTHORITAH_TOKEN }}
+          RESPECT_MY_AUTHORITAH_TOKEN: ${{ secrets.RESPECT_MY_AUTHORITAH_TOKEN }}

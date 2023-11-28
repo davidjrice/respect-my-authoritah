@@ -24,7 +24,7 @@ class Authoritah:
         repo = self.get_current_repo()
         print(repo)
 
-        token = os.getenv('GITHUB_TOKEN')
+        token = os.getenv('RESPECT_MY_AUTHORITAH_TOKEN')
         headers = {'Authorization': f'token {token}'}
         response = requests.get(f'https://api.github.com/repos/{repo}/contributors', headers=headers)
         if response.status_code != 200:
