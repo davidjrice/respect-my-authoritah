@@ -1,21 +1,21 @@
 name: Update authors
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 jobs:
-    update:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Check out code
-                uses: actions/checkout@v2
-            - name: Set up Python
-                uses: actions/setup-python@v2
-                with:
-                    python-version: 3.8
-            - name: Install dependencies
-                run: pip install toml requests
-            - name: Run script
-                run: python update_authors.py
-                env:
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.8
+      - name: Install dependencies
+        run: pip install toml requests
+      - name: Run script
+        run: python update_authors.py
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
