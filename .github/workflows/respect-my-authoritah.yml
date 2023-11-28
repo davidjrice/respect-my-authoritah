@@ -16,6 +16,6 @@ jobs:
       - name: Install dependencies
         run: pip install toml requests
       - name: Run script
-        run: python update_authors.py
+        run: python respect-my-authoritah.py
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
