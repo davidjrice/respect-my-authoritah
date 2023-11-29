@@ -6,7 +6,7 @@ readme = "README.md"
 version = "0.0.1"
 dependencies = [
     "requests",
-    "toml",
+    "tomlkit",
 ]
 
 [project.scripts]

@@ -3,7 +3,7 @@ import subprocess
 import sys
 import uuid
 import requests
-import toml
+import tomlkit import parse, dumps
 
 class Authoritah:
     def __init__(self) -> None:
@@ -37,14 +37,14 @@ class Authoritah:
 
         # Read and parse pyproject.toml
         with open('pyproject.toml', 'r') as file:
-            pyproject = toml.load(file)
+            pyproject = parse(file.read())
 
         # Update authors list
         pyproject['project']['authors'] = contributors
 
         # Write back to pyproject.toml
         with open('pyproject.toml', 'w') as file:
-            toml.dump(pyproject, file)
+            file.write(dumps(pyproject))
 
         # Create a new branch
         branch_name = f"update-authors-{uuid.uuid4().hex}"
