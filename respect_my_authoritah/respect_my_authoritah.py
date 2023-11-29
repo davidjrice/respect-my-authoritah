@@ -4,6 +4,7 @@ import sys
 import uuid
 import requests
 import tomlkit
+from jinja2 import Template
 
 
 class Authoritah:
@@ -110,11 +111,19 @@ class Authoritah:
             f"git push https://{token}:x-oauth-basic@github.com/{repo}.git {branch_name}"
         )
 
+        # Read the markdown PR template
+        with open("template.md", "r") as file:
+            template = Template(file.read())
+
+        # Render the template with the authors list
+        body = template.render(authors=contributors_info)
+
         # Create a new pull request
         pr_data = {
-            "title": "Update authors list",
+            "title": "chore: update authors",
             "head": branch_name,
             "base": "main",
+            "body": body,
         }
         response = requests.post(
             f"https://api.github.com/repos/{repo}/pulls", headers=headers, json=pr_data
