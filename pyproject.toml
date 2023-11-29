@@ -15,7 +15,6 @@ respect-my-authoritah = "respect_my_authoritah.cli:main"
 [[project.authors]]
 name = "David Rice"
 email = "me@davidjrice.co.uk"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
