@@ -62,7 +62,7 @@ class Authoritah:
             pyproject = parse(file.read())
 
         # Update authors list
-        pyproject["project"]["authors"] = contributors
+        pyproject["project"]["authors"] = contributors_info
 
         # Write back to pyproject.toml
         with open("pyproject.toml", "w") as file:
