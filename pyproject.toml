@@ -5,6 +5,7 @@ name = "respect-my-authoritah"
 readme = "README.md"
 version = "0.0.1"
 dependencies = [
+    "jinja2",
     "requests",
     "tomlkit",
 ]
