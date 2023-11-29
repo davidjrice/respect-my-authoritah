@@ -69,6 +69,18 @@ class Authoritah:
 
         authors_field_exists = "authors" in pyproject["project"]
 
+        # Get current authors list
+        current_authors = pyproject["project"].get("authors", [])
+
+        # Convert contributors_info and current_authors to sets for easy comparison
+        contributors_info_set = set(tuple(info.items()) for info in contributors_info)
+        current_authors_set = set(tuple(author.items()) for author in current_authors)
+
+        # Check if authors list has changed
+        if contributors_info_set == current_authors_set:
+            print("Authors list has not changed")
+            sys.exit(0)
+
         # Update authors list
         pyproject["project"]["authors"] = list(contributors_info)
 
