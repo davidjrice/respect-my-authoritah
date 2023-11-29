@@ -3,7 +3,7 @@ import subprocess
 import sys
 import uuid
 import requests
-from tomlkit import parse, dumps
+import tomlkit
 
 
 class Authoritah:
@@ -65,14 +65,20 @@ class Authoritah:
 
         # Read and parse pyproject.toml
         with open("pyproject.toml", "r") as file:
-            pyproject = parse(file.read())
+            pyproject = tomlkit.parse(file.read())
+
+        authors_field_exists = "authors" not in pyproject["project"]
 
         # Update authors list
         pyproject["project"]["authors"] = list(contributors_info)
 
+        if not authors_field_exists:
+            # Add newline after authors field
+            pyproject["project"]["authors"].add(tomlkit.nl())
+
         # Write back to pyproject.toml
         with open("pyproject.toml", "w") as file:
-            file.write(dumps(pyproject))
+            file.write(tomlkit.dumps(pyproject))
 
         # Create a new branch
         branch_name = f"update-authors-{uuid.uuid4().hex}"
