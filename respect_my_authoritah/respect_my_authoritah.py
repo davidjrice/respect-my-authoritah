@@ -49,9 +49,15 @@ class Authoritah:
                 f"https://api.github.com/users/{username}", headers=headers
             )
             user_data = response.json()
+            name = user_data.get("name", "")
+            email = user_data.get("email", "")
+
+            if not email:
+                break
+
             user_info = {
-                "name": user_data.get("name", ""),
-                "email": user_data.get("email", ""),
+                "name": name,
+                "email": email,
             }
             contributors_info.append(user_info)
 
