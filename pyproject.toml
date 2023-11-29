@@ -13,6 +13,9 @@ dependencies = [
 [project.scripts]
 respect-my-authoritah = "respect_my_authoritah.cli:main"
 
+[tool.hatch.build]
+include = ["*.md"]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
