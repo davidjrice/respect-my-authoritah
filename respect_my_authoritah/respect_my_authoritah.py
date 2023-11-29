@@ -3,7 +3,7 @@ import subprocess
 import sys
 import uuid
 import requests
-import tomlkit import parse, dumps
+from tomlkit import parse, dumps
 
 class Authoritah:
     def __init__(self) -> None:
