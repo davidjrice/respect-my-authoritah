@@ -3,7 +3,7 @@ import subprocess
 import sys
 import uuid
 import requests
-from tomlkit import parse, dumps, item
+from tomlkit import parse, dumps
 
 
 class Authoritah:
@@ -42,7 +42,7 @@ class Authoritah:
         contributors = [user["login"] for user in response.json()]
         print(contributors)
 
-        contributors_info = item.Array()
+        contributors_info = []
 
         for username in contributors:
             response = requests.get(
@@ -68,7 +68,7 @@ class Authoritah:
             pyproject = parse(file.read())
 
         # Update authors list
-        pyproject["project"]["authors"] = contributors_info
+        pyproject["project"]["authors"] = list(contributors_info)
 
         # Write back to pyproject.toml
         with open("pyproject.toml", "w") as file:
