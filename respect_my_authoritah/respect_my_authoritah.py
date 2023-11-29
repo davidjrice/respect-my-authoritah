@@ -3,7 +3,7 @@ import subprocess
 import sys
 import uuid
 import requests
-from tomlkit import parse, dumps
+from tomlkit import parse, dumps, item
 
 
 class Authoritah:
@@ -42,7 +42,7 @@ class Authoritah:
         contributors = [user["login"] for user in response.json()]
         print(contributors)
 
-        contributors_info = []
+        contributors_info = item.Array()
 
         for username in contributors:
             response = requests.get(
