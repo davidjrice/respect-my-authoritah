@@ -113,7 +113,7 @@ class Authoritah:
 
         # Read the markdown PR template
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        template_path = os.path.join(current_dir, "template.md")
+        template_path = os.path.join(current_dir, "templates", "pull-request.md")
         with open(template_path, "r") as file:
             template = Template(file.read())
 
