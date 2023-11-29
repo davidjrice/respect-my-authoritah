@@ -8,6 +8,7 @@ dependencies = [
     "requests",
     "tomlkit",
 ]
+authors = ["davidjrice"]
 
 [project.scripts]
 respect-my-authoritah = "respect_my_authoritah.cli:main"
