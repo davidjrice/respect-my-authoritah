@@ -6,6 +6,8 @@ import requests
 import tomlkit
 from jinja2 import Template
 
+PULL_REQUEST_TITLE: str = "chore: update authors"
+
 
 class Authoritah:
     def __init__(self) -> None:
@@ -111,6 +113,22 @@ class Authoritah:
             f"git push https://{token}:x-oauth-basic@github.com/{repo}.git {branch_name}"
         )
 
+        # Fetch open pull requests from GitHub API
+        response = requests.get(
+            f"https://api.github.com/repos/{repo}/pulls?state=open", headers=headers
+        )
+        if response.status_code != 200:
+            print(f"Failed to fetch pull requests: {response.content}")
+            sys.exit(1)
+
+        pull_requests = response.json()
+
+        # Check if there are any open pull requests
+        for pr in pull_requests:
+            if pr["title"] == PULL_REQUEST_TITLE:
+                print("There is already an open pull request")
+                sys.exit(1)
+
         # Read the markdown PR template
         current_dir = os.path.dirname(os.path.abspath(__file__))
         template_path = os.path.join(current_dir, "templates", "pull-request.md")
@@ -122,7 +140,7 @@ class Authoritah:
 
         # Create a new pull request
         pr_data = {
-            "title": "chore: update authors",
+            "title": PULL_REQUEST_TITLE,
             "head": branch_name,
             "base": "main",
             "body": body,
