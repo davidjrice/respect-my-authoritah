@@ -73,6 +73,7 @@ class Authoritah:
         pyproject["project"]["authors"] = list(contributors_info)
 
         if not authors_field_exists:
+            print("Authors field already exists")
             # Add newline after authors field
             pyproject["project"].add(tomlkit.comment(""))
 
