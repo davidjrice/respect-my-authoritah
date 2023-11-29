@@ -112,7 +112,9 @@ class Authoritah:
         )
 
         # Read the markdown PR template
-        with open("template.md", "r") as file:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        template_path = os.path.join(current_dir, "template.md")
+        with open(template_path, "r") as file:
             template = Template(file.read())
 
         # Render the template with the authors list
