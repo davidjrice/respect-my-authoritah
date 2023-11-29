@@ -4,14 +4,12 @@ license = "MIT"
 name = "respect-my-authoritah"
 readme = "README.md"
 version = "0.0.1"
-dependencies = [
-    "requests",
-    "toml",
-]
+dependencies = [ "requests", "toml",]
+authors = [ "davidjrice",]
+
+[build-system]
+requires = [ "hatchling",]
+build-backend = "hatchling.build"
 
 [project.scripts]
 respect-my-authoritah = "respect_my_authoritah.cli:main"
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
