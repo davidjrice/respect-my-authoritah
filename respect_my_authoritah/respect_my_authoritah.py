@@ -67,7 +67,7 @@ class Authoritah:
         with open("pyproject.toml", "r") as file:
             pyproject = tomlkit.parse(file.read())
 
-        authors_field_exists = "authors" not in pyproject["project"]
+        authors_field_exists = "authors" in pyproject["project"]
 
         # Update authors list
         pyproject["project"]["authors"] = list(contributors_info)
