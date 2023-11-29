@@ -74,7 +74,7 @@ class Authoritah:
 
         if not authors_field_exists:
             # Add newline after authors field
-            pyproject["project"]["authors"].add(tomlkit.nl())
+            pyproject["project"].add(tomlkit.nl())
 
         # Write back to pyproject.toml
         with open("pyproject.toml", "w") as file:
