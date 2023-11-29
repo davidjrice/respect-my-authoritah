@@ -55,7 +55,7 @@ class Authoritah:
         os.system('git config --global user.name "GitHub Actions"')
         os.system('git add pyproject.toml')
         os.system('git commit -m "Update authors list"')
-        os.system(f'git push https://{token}@github.com/{repo}.git {branch_name}')
+        os.system(f'git push https://x-oauth-basic:{token}@github.com/{repo}.git {branch_name}')
 
         # Create a new pull request
         pr_data = {
