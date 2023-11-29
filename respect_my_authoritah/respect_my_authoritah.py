@@ -85,8 +85,8 @@ class Authoritah:
         pyproject["project"]["authors"] = list(contributors_info)
 
         if not authors_field_exists:
-            print("Authors field already exists")
             # Add newline after authors field
+            print("Authors field already does not exist, adding a newline")
             pyproject["project"].add(tomlkit.nl())
 
         # Write back to pyproject.toml
