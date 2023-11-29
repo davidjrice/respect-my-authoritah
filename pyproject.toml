@@ -14,7 +14,10 @@ dependencies = [
 respect-my-authoritah = "respect_my_authoritah.cli:main"
 
 [tool.hatch.build]
-include = ["*.md"]
+include = [
+    "**/*.py",
+    "*.md",
+]
 
 [build-system]
 requires = ["hatchling"]
